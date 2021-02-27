@@ -1,13 +1,24 @@
-## Setup the project
+# README
 
-Don't forget to instanciate pgql to use this project
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-`bundle && yarn`
+Things you may want to cover:
 
-`rails db:create && rails db:migrate && rails db:seed`
+* Ruby version
 
-`rails s`
+* System dependencies
 
-##Versions
-Ruby: 2.7.1
-Rails 6.0.3.5
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...

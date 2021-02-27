@@ -14,6 +14,15 @@ class DeviseTokenAuthCreatePatients < ActiveRecord::Migration[6.0]
       t.datetime :reset_password_sent_at
       t.boolean  :allow_password_change, :default => false
 
+      ## Rememberable
+      t.datetime :remember_created_at
+
+      ## Confirmable
+      t.string   :confirmation_token
+      t.datetime :confirmed_at
+      t.datetime :confirmation_sent_at
+      t.string   :unconfirmed_email # Only if using reconfirmable
+
       ## User Info
       t.string :first_name
       t.string :last_name

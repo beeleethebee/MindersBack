@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-class DeviseTokenAuthCreateTherapists < ActiveRecord::Migration[6.0]
-  def change
+class DeviseTokenAuthCreateTherapists < ActiveRecord::Migration[6.0] # rubocop:todo Style/Documentation
+  def change # rubocop:todo Metrics/AbcSize # rubocop:todo Metrics/MethodLength
     create_table(:therapists) do |t|
       ## Required
       t.string :provider, null: false, default: 'email'
@@ -13,7 +13,7 @@ class DeviseTokenAuthCreateTherapists < ActiveRecord::Migration[6.0]
       ## Recoverable
       t.string   :reset_password_token
       t.datetime :reset_password_sent_at
-      t.boolean  :allow_password_change, default: true
+      t.boolean  :allow_password_change, default: false
 
       ## Rememberable
       t.datetime :remember_created_at
@@ -39,6 +39,5 @@ class DeviseTokenAuthCreateTherapists < ActiveRecord::Migration[6.0]
     add_index :therapists, %i[uid provider], unique: true
     add_index :therapists, :reset_password_token, unique: true
     add_index :therapists, :confirmation_token,   unique: true
-    # add_index :therapists, :unlock_token,         unique: true
   end
 end
