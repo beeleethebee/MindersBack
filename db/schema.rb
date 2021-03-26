@@ -12,9 +12,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_210_319_113_904) do
+ActiveRecord::Schema.define(version: 20_210_326_074_011) do # rubocop:todo Metrics/BlockLength
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
+
+  create_table 'entries', force: :cascade do |t|
+    t.string 'location'
+    t.string 'context'
+    t.datetime 'time'
+    t.bigint 'patient_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['patient_id'], name: 'index_entries_on_patient_id'
+  end
 
   create_table 'patients', force: :cascade do |t|
     t.string 'provider', default: 'email', null: false
@@ -33,4 +43,6 @@ ActiveRecord::Schema.define(version: 20_210_319_113_904) do
     t.index ['reset_password_token'], name: 'index_patients_on_reset_password_token', unique: true
     t.index %w[uid provider], name: 'index_patients_on_uid_and_provider', unique: true
   end
+
+  add_foreign_key 'entries', 'patients'
 end

@@ -52,8 +52,13 @@ group :test do
   gem 'webdrivers'
 end
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'devise'
 gem 'devise_token_auth'
+gem 'factory_bot'
+gem 'factory_bot_rails'
+gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
 gem 'rack-cors', require: 'rack/cors'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+%w[rspec-core rspec-expectations rspec-mocks rspec-rails rspec-support].each do |lib|
+  gem lib, git: "https://github.com/rspec/#{lib}.git", branch: 'main'
+end

@@ -8,5 +8,6 @@ Rails.application.routes.draw do
       sessions: 'api/sessions'
       # passwords: 'study_quizz/passwords'
     }
+    resources :entries
   end
 end
