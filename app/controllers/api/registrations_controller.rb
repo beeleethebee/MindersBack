@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
-class Api::RegistrationsController < DeviseTokenAuth::RegistrationsController
-  protect_from_forgery with: :null_session, prepend: true
+module Api
+  class RegistrationsController < DeviseTokenAuth::RegistrationsController # rubocop:todo Style/Documentation
+    protect_from_forgery with: :null_session, prepend: true
 
+    def sign_up_params
+      params.permit(:email, :password, :password_confirmation, :last_name, :first_name)
+    end
+  end
 end

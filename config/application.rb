@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'boot'
 
 require 'rails/all'
@@ -7,7 +9,7 @@ require 'rails/all'
 Bundler.require(*Rails.groups)
 
 module MindersBack
-  class Application < Rails::Application
+  class Application < Rails::Application # rubocop:todo Style/Documentation
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
 
@@ -20,8 +22,8 @@ module MindersBack
         origins '*'
         resource '*',
                  headers: :any,
-                 expose: ['access-token', 'expiry', 'token-type', 'uid', 'client'],
-                 methods: [:get, :post, :options, :delete, :put]
+                 expose: %w[access-token expiry token-type uid client],
+                 methods: %i[get post options delete put]
       end
     end
   end
