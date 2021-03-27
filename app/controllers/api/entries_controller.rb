@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
 module Api
-  class EntriesController < ApplicationController # rubocop:todo Style/Documentation
+  class EntriesController < ApiController # rubocop:todo Style/Documentation
     before_action :set_entry, only: %i[show update destroy]
-    before_action :authenticate_patient!
     before_action :set_user
 
     # GET /api/entries
@@ -12,22 +11,29 @@ module Api
     end
 
     # GET /api/entries/1
-    def show; end
+    def show
+      return render json: '', status: :not_found if @entry.nil?
+      render json: '', status: :unauthorized unless @entry.patient == @patient
+    end
 
     # POST /api/entries
     def create
       @entry = Entry.new(entry_params)
+      @entry.patient = @patient
       if @entry.save
-        render :show, status: :created, location: @entry
+        render 'api/entries/show', status: :created, entry: @entry
       else
-        render json: @entry.errors, status: :unprocessable_entity
+        render json: { errors: @entry.errors }, status: :unprocessable_entity
       end
     end
 
     # PATCH/PUT /api/entries/1
     def update
+      return render json: '', status: :not_found if @entry.nil?
+      return render json: '', status: :unauthorized unless @entry.patient == @patient
+
       if @entry.update(entry_params)
-        render :show, status: :ok, location: @entry
+        render 'api/entries/show', status: :ok, entry: @entry
       else
         render json: @entry.errors, status: :unprocessable_entity
       end
@@ -35,6 +41,9 @@ module Api
 
     # DELETE /api/entries/1
     def destroy
+      return render json: '', status: :not_found if @entry.nil?
+      return render json: '', status: :unauthorized unless @entry.patient == @patient
+
       @entry.destroy
       render json: '', status: :no_content
     end
@@ -43,16 +52,17 @@ module Api
 
     # Use callbacks to share common setup or constraints between actions.
     def set_entry
-      @entry = Entry.find(params[:id])
+      @entry = Entry.find_by(id: params[:id])
+
     end
 
     # Only allow a list of trusted parameters through.
     def entry_params
-      params.fetch(:entry, {})
+      params.permit(:location, :context, :time)
     end
 
     def set_user
-      @user = current_user
+      @patient = current_api_patient
     end
   end
 end
