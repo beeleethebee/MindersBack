@@ -53,6 +53,16 @@ GIT
   specs:
     rspec-support (3.11.0.pre)
 
+GIT
+  remote: https://github.com/rspec/rspec.git
+  revision: 9fb905ef4a6c4b7303c7eeee654128126d73c42b
+  branch: main
+  specs:
+    rspec (3.11.0.pre)
+      rspec-core (= 3.11.0.pre)
+      rspec-expectations (= 3.11.0.pre)
+      rspec-mocks (= 3.11.0.pre)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -294,6 +304,7 @@ DEPENDENCIES
   puma (~> 4.1)
   rack-cors
   rails (~> 6.0.3, >= 6.0.3.5)
+  rspec!
   rspec-core!
   rspec-expectations!
   rspec-mocks!

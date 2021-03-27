@@ -7,4 +7,6 @@ class Patient < ActiveRecord::Base
   include DeviseTokenAuth::Concerns::User
 
   has_many :entries
+
+  validates_presence_of :last_name, :first_name
 end
