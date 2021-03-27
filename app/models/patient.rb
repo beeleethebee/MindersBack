@@ -6,7 +6,7 @@ class Patient < ActiveRecord::Base
          :recoverable, :validatable
   include DeviseTokenAuth::Concerns::User
 
-  has_many :entries
+  has_many :entries, dependent: :destroy
 
   validates_presence_of :last_name, :first_name
 end

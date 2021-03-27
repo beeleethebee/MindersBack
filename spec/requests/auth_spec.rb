@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'AuthSystem', type: :request do
+RSpec.describe 'AuthSystem', type: :request do # rubocop:todo Metrics/BlockLength
   include Rails.application.routes.url_helpers
   describe 'POST /api/auth/' do
     let!(:patient) { attributes_for(:patient) }

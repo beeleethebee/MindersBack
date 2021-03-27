@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Api::EntriesController', type: :request do
+RSpec.describe 'Api::EntriesController', type: :request do # rubocop:todo Metrics/BlockLength
   include Rails.application.routes.url_helpers
 
   describe 'GET /api/entries' do
@@ -27,7 +27,7 @@ RSpec.describe 'Api::EntriesController', type: :request do
     end
   end
 
-  describe 'GET /api/entries/:id' do
+  describe 'GET /api/entries/:id' do # rubocop:todo Metrics/BlockLength
     let!(:patient) { create(:patient) }
     let!(:more_entries) { create_list(:entry, 25) }
     let!(:entries) { create_list(:entry, 5, patient: patient) }
@@ -87,7 +87,7 @@ RSpec.describe 'Api::EntriesController', type: :request do
     end
   end
 
-  describe 'PATCH /api/entries/:id' do
+  describe 'PATCH /api/entries/:id' do # rubocop:todo Metrics/BlockLength
     let!(:patient) { create(:patient) }
     let!(:entry) { create(:entry, patient: patient) }
     before do

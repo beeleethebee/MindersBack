@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+#:nodoc:
 class ApiController < ActionController::API
   include DeviseTokenAuth::Concerns::SetUserByToken
   before_action :authenticate_api_patient!
@@ -10,4 +11,3 @@ class ApiController < ActionController::API
     respond_with '{"error": "not_found"}', status: :not_found
   end
 end
-
