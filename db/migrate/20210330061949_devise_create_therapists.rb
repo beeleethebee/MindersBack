@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
+#:nodoc:
 class DeviseCreateTherapists < ActiveRecord::Migration[6.0]
-  def change
+  def change # rubocop:todo Metrics/MethodLength
     create_table :therapists do |t|
       ## Database authenticatable
-      t.string :email,              null: false, default: ""
-      t.string :encrypted_password, null: false, default: ""
+      t.string :email,              null: false, default: ''
+      t.string :encrypted_password, null: false, default: ''
 
       ## Recoverable
       t.string   :reset_password_token

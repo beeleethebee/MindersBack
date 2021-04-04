@@ -11,15 +11,19 @@
 puts 'Purge the database'
 Patient.destroy_all
 Entry.destroy_all
-
+puts '-----------'
 puts 'Add 30 accounts with password as password'
 FactoryBot.create_list(:patient, 30)
 FactoryBot.create(:patient, email: 'test@gmail.com')
 FactoryBot.create(:patient, email: 'test2@gmail.com')
 puts 'Add test@gmail.com and test2@gmail.com accounts with password as password'
-
+puts '-----------'
 Patient.all.each do |patient|
   FactoryBot.create_list(:entry, 20, patient: patient)
 end
 
 puts "#{Entry.count} entries created successfully, 20 by patient"
+
+puts '-----------'
+FactoryBot.create_list(:therapist, 20)
+puts 'Add 20 therapists accounts with password ass password'
