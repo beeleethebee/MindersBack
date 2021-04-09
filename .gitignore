@@ -37,4 +37,4 @@ yarn-debug.log*
 .idea/
 Gemfile.lock
 config/credentials.yml.enc
-master.key
+config/master.key
