@@ -35,3 +35,6 @@
 yarn-debug.log*
 .yarn-integrity
 .idea/
+Gemfile.lock
+config/credentials.yml.enc
+master.key
