@@ -2,7 +2,8 @@
 
 Rails.application.routes.draw do
   devise_for :therapists
-  resources :therapists, only: [:index]
+  resources :therapists, only: %i[index]
+  resources :statuses, only: %i[create]
 
   root 'therapists#home'
 

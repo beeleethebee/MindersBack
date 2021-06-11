@@ -1,0 +1,19 @@
+<div class="border-bottom m-2" style="width: 250px">
+  <div class="d-flex flex-column">
+    <div class="d-flex justify-content-between border w-100">
+      <p>Contact: </p>
+      <p><%= "#{patient.first_name} #{patient.last_name}" %></p>
+    </div>
+    <div class="d-flex justify-content-between border w-100">
+      <p>Status: </p>
+      <%= form_with url: statuses_url, method: :post, local: true, id: 'status_form' do |form| %>
+        <%= form.select(:status, options_for_select(['', *Global::Status], patient.statuses.last&.title), {}, { onchange: "submitForm(this)"} ) %>
+        <%= form.hidden_field(:patient, value: patient.id) %>
+      <% end %>
+    </div>
+    <div class="d-flex justify-content-between border w-100">
+      <p>Dernière MAJ: </p>
+      <p><%= patient.statuses.last.present? ? distance_of_time_in_words(patient.statuses.last.created_at, DateTime.now) : 'N/A' %></p>
+    </div>
+  </div>
+</div>

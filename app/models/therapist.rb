@@ -5,4 +5,5 @@ class Therapist < ApplicationRecord
          :recoverable, :rememberable
 
   validates_presence_of :email, :last_name
+  has_many :patients, dependent: :nullify
 end

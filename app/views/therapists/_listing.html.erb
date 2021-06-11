@@ -1,0 +1,5 @@
+<div class="d-flex flex-wrap justify-content-center">
+  <% @patients.each do |patient| %>
+    <%= render partial: 'therapists/patient', locals: { patient: patient} %>
+  <% end %>
+</div>

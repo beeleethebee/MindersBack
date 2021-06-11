@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_30_061949) do
+ActiveRecord::Schema.define(version: 2021_05_21_111154) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,9 +38,20 @@ ActiveRecord::Schema.define(version: 2021_03_30_061949) do
     t.json "tokens"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "therapist_id"
     t.index ["email"], name: "index_patients_on_email", unique: true
     t.index ["reset_password_token"], name: "index_patients_on_reset_password_token", unique: true
+    t.index ["therapist_id"], name: "index_patients_on_therapist_id"
     t.index ["uid", "provider"], name: "index_patients_on_uid_and_provider", unique: true
+  end
+
+  create_table "statuses", force: :cascade do |t|
+    t.string "title"
+    t.bigint "patient_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "positivity", default: 5
+    t.index ["patient_id"], name: "index_statuses_on_patient_id"
   end
 
   create_table "therapists", force: :cascade do |t|
@@ -59,4 +70,6 @@ ActiveRecord::Schema.define(version: 2021_03_30_061949) do
   end
 
   add_foreign_key "entries", "patients"
+  add_foreign_key "patients", "therapists"
+  add_foreign_key "statuses", "patients"
 end
