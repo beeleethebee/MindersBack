@@ -62,3 +62,7 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 %w[rspec-core rspec-expectations rspec-mocks rspec-rails rspec-support rspec].each do |lib|
   gem lib, git: "https://github.com/rspec/#{lib}.git", branch: 'main'
 end
+gem 'chartkick'
+gem 'groupdate'
+
+

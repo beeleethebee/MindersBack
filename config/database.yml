@@ -23,6 +23,9 @@ default: &default
 
 development:
   <<: *default
+  host: <%= ENV["PG_HOST"] %>
+  username: <%= ENV["PG_USER"] %>
+  password: <%= ENV["PG_PASSWORD"] %>
   database: MindersBack_development
 
   # The specified database role being used to connect to postgres.

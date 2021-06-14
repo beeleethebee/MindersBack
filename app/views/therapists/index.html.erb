@@ -1,4 +1,5 @@
-<p class="text-center">Salut mon reuf</p>
+<h1 class="text-center">Plus qu a intégrer le boss</h1>
+<%= area_chart Status.group(:title).group_by_day(:created_at).count, discrete: true %>
 <%= render partial: "therapists/listing" %>
 
 <script>
