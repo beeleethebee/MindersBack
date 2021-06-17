@@ -2,8 +2,9 @@
 
 #:nodoc:
 class TherapistsController < ApplicationController
-  before_action :authenticate_therapist!, except: :home
-  before_action :set_therapist, except: :home
+  skip_before_action :authenticate_therapist!, only: [:home]
+  skip_before_action :set_therapist, only: [:home]
+
 
   def home; end
 
@@ -11,9 +12,4 @@ class TherapistsController < ApplicationController
     @patients = @therapist.patients.includes(:statuses)
   end
 
-  private
-
-  def set_therapist
-    @therapist = current_therapist
-  end
 end

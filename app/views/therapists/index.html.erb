@@ -1,7 +1,17 @@
-<h1 class="text-center">Plus qu a intégrer le boss</h1>
-<%= area_chart Status.group(:title).group_by_day(:created_at).count, discrete: true %>
-<%= render partial: "therapists/listing" %>
+<h1 class="text-center my-5">Mon tableau de bord</h1>
 
+<% if flash[:notice] %>
+  <h2 class="text-center my-5"> <%= flash[:notice] %></h2>
+<% end %>
+
+<% if @therapist.patients.any? %>
+  <%= area_chart Status.group(:title).group_by_minute(:created_at).count, discrete: true %>
+  <%= render partial: "therapists/listing" %>
+<% else %>
+    <h3 class="text-center">Il faut ajouter des patients pour avoir accès aux données</h3>
+<% end %>
+
+<%= link_to 'Ajouter un faux patient', create_fake_patients_path %>
 <script>
   function submitForm(selector) {
       selector.parentNode.submit();

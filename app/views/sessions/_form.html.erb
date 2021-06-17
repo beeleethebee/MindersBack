@@ -1,0 +1,49 @@
+<%= simple_form_for @session do |f| %>
+  <% if session.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(session.errors.count, "error") %> prohibited this session from being saved:</h2>
+
+      <ul>
+        <% session.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.input :schedule_time %>
+  <%= f.input :patient, collection: @therapist.patients %>
+  <%= f.button :submit %>
+<% end %>
+
+<%#= form_with(model: session, local: true) do |form| %>
+  <%# if session.errors.any? %>
+<!--    <div id="error_explanation">-->
+<!--      <h2><%#= pluralize(session.errors.count, "error") %> prohibited this session from being saved:</h2>-->
+
+<!--      <ul>-->
+        <%# session.errors.full_messages.each do |message| %>
+<!--          <li><%#= message %></li>-->
+        <%# end %>
+<!--      </ul>-->
+<!--    </div>-->
+  <%# end %>
+
+<!--  <div class="field">-->
+    <%#= form.label :schedule_time %>
+    <%#= form.datetime_select :schedule_time %>
+<!--  </div>-->
+
+<!--  <div class="field">-->
+    <%#= form.label :therapist_id %>
+    <%#= form.text_field :therapist_id %>
+<!--  </div>-->
+
+<!--  <div class="field">-->
+    <%#= form.label :patient_id %>
+    <%#= form.text_field :patient_id %>
+<!--  </div>-->
+
+<!--  <div class="actions">-->
+    <%#= form.submit %>
+<!--  </div>-->
+<%# end %>

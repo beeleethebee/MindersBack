@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Shedulet time:</strong>
+  <%= @session.shedulet_time %>
+</p>
+
+<p>
+  <strong>Therapist:</strong>
+  <%= @session.therapist_id %>
+</p>
+
+<p>
+  <strong>Patient:</strong>
+  <%= @session.patient_id %>
+</p>
+
+<%= link_to 'Edit', edit_session_path(@session) %> |
+<%= link_to 'Back', sessions_path %>

@@ -7,8 +7,13 @@ class Patient < ActiveRecord::Base
   include DeviseTokenAuth::Concerns::User
 
   has_many :entries, dependent: :destroy
+  has_many :sessions, dependent: :destroy
   belongs_to :therapist
   has_many :statuses
 
   validates_presence_of :last_name, :first_name
+
+  def to_s
+    "#{first_name} #{last_name}"
+  end
 end

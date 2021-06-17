@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MindersBack</title>
+    <title>Minders</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,19 @@
   </head>
 
   <body>
+  <header class="d-flex justify-content-lg-between px-5 my-1 align-items-center shadow">
+    <h1>Minders</h1>
+    <div class="w-25 d-flex justify-content-around">
+      <% if @therapist %>
+        <%= link_to 'Tableau de bord', therapists_path %>
+        <%= link_to 'Mes séances', sessions_path%>
+        <%= link_to 'Mon compte', therapists_path %>
+      <% else %>
+        <%= link_to 'Connection', new_therapist_session_path %>
+        <%= link_to 'Inscription', new_therapist_registration_path %>
+      <% end %>
+    </div>
+  </header>
     <%= yield %>
   </body>
 </html>

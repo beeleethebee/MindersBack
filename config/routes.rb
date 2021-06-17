@@ -4,7 +4,13 @@ Rails.application.routes.draw do
   devise_for :therapists
   resources :therapists, only: %i[index]
   resources :statuses, only: %i[create]
+  resources :sessions
 
+  resources :patients, only: [] do
+    collection do
+      get :create_fake
+    end
+  end
   root 'therapists#home'
 
   namespace :api, defaults: { format: 'json' } do
