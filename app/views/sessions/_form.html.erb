@@ -11,7 +11,7 @@
     </div>
   <% end %>
   <%= f.input :schedule_time %>
-  <%= f.input :patient, collection: @therapist.patients %>
+  <%= f.input :patient_id, collection: @therapist.patients %>
   <%= f.button :submit %>
 <% end %>
 

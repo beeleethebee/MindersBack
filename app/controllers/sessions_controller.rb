@@ -19,9 +19,10 @@ class SessionsController < ApplicationController
 
   # POST /sessions or /sessions.json
   def create
-    @session = Session.new(**session_params, therapist: @therapist)
+    @session = Session.new(session_params)
+    @session.therapist = @therapist
     if @session.save
-      redirect_to @session, notice: 'Session was successfully created.'
+      redirect_to sessions_path, notice: 'Session was successfully created.'
     else
       render :new, status: :unprocessable_entity
     end
