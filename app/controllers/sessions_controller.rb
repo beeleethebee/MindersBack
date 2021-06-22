@@ -1,4 +1,4 @@
-class SessionsController < ApplicationController
+class SessionsController < TherapistsApplicationController
   before_action :set_session, only: %i[show edit update destroy]
 
   # GET /sessions

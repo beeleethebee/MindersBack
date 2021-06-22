@@ -1,0 +1,16 @@
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha512-AIOTidJAcHBH2G/oZv9viEGXRqDNmfdPVPYOYKGy3fti0xIplnlgMHUGfuNRzC6FkzIo0iIxgFnr9RikFxK+sw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<input id="datetimepicker" type="text" name="<%= name %>" value="<% value if value %>">
+
+<script defer>
+    $.datetimepicker.setLocale('fr');
+
+    jQuery('#datetimepicker').datetimepicker({
+        minDate: 0,
+        step: 30,
+        <% if value %>
+          value: "<%= value.strftime("%Y/%m/%d %T")%>",
+        <% end %>
+    });
+</script>

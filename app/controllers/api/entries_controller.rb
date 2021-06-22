@@ -12,8 +12,6 @@ module Api
 
     # GET /api/entries/1
     def show
-      return render json: '', status: :not_found if @entry.nil?
-
       render json: '', status: :unauthorized unless @entry.patient == @patient
     end
 
@@ -30,7 +28,6 @@ module Api
 
     # PATCH/PUT /api/entries/1
     def update
-      return render json: '', status: :not_found if @entry.nil?
       return render json: '', status: :unauthorized unless @entry.patient == @patient
 
       if @entry.update(entry_params)
@@ -42,7 +39,6 @@ module Api
 
     # DELETE /api/entries/1
     def destroy
-      return render json: '', status: :not_found if @entry.nil?
       return render json: '', status: :unauthorized unless @entry.patient == @patient
 
       @entry.destroy
@@ -53,7 +49,7 @@ module Api
 
     # Use callbacks to share common setup or constraints between actions.
     def set_entry
-      @entry = Entry.find_by(id: params[:id])
+      @entry = Entry.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

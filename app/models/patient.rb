@@ -8,7 +8,7 @@ class Patient < ActiveRecord::Base
 
   has_many :entries, dependent: :destroy
   has_many :sessions, dependent: :destroy
-  belongs_to :therapist
+  belongs_to :therapist, optional: true
   has_many :statuses
 
   validates_presence_of :last_name, :first_name

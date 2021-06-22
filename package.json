@@ -11,6 +11,7 @@
     "chart.js": "^3.3.2",
     "chartkick": "^4.0.4",
     "jquery": "^3.6.0",
+    "jquery-datetimepicker": "^2.5.21",
     "popper.js": "^1.16.1",
     "stimulus": "^2.0.0"
   },

@@ -5,7 +5,7 @@ module Api
     protect_from_forgery with: :null_session, prepend: true
 
     def sign_up_params
-      params.permit(:email, :password, :password_confirmation)
+      params.permit(:email, :password, :last_name, :first_name)
     end
   end
 end

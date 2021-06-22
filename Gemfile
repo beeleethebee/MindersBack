@@ -66,5 +66,3 @@ gem 'chartkick'
 gem 'groupdate'
 
 gem 'simple_form'
-
-

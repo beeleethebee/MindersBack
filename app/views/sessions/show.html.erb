@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Schedule time:</strong>
-  <%= @session.schedule_time %>
+  <strong>Date de la consultation:</strong>
+  <%= @session.schedule_time.strftime("%Y/%m/%d %T") %>
 </p>
 
 <p>
@@ -10,5 +10,5 @@
   <%= @session.patient %>
 </p>
 
-<%= link_to 'Edit', edit_session_path(@session) %> |
-<%= link_to 'Back', sessions_path %>
+<%= link_to 'Modifier', edit_session_path(@session) %> |
+<%= link_to 'Retour', sessions_path %>

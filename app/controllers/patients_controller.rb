@@ -1,4 +1,4 @@
-class PatientsController < ApplicationController
+class PatientsController < TherapistsApplicationController
   before_action :set_patient, only: %i[show]
   def show; end
 

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 #:nodoc:
-class TherapistsController < ApplicationController
+class TherapistsController < TherapistsApplicationController
   skip_before_action :authenticate_therapist!, only: [:home]
   skip_before_action :set_therapist, only: [:home]
 

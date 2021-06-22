@@ -13,14 +13,14 @@
   <header class="d-flex justify-content-lg-between px-5 my-1 align-items-center shadow">
     <h1>Minders</h1>
     <div class="w-25 d-flex justify-content-around">
-      <% if @therapist %>
+      <% if current_therapist&.id.nil? %>
+        <%=  link_to 'Connection', new_therapist_session_path  %>
+        <%=  link_to 'Inscription', new_therapist_registration_path  %>
+      <%  else  %>
         <%= link_to 'Tableau de bord', therapists_path %>
-        <%= link_to 'Mes séances', sessions_path%>
-        <%= link_to 'Mon compte', therapists_path %>
-      <% else %>
-        <%= link_to 'Connection', new_therapist_session_path %>
-        <%= link_to 'Inscription', new_therapist_registration_path %>
-      <% end %>
+        <%=  link_to 'Mes séances', sessions_path %>
+        <%=  link_to 'Mon compte', therapists_path  %>
+      <%  end %>
     </div>
   </header>
     <%= yield %>
