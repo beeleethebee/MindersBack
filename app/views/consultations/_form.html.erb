@@ -1,0 +1,20 @@
+<%= simple_form_for @consultation do |f| %>
+  <% if consultation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(consultation.errors.count, "error") %> prohibited this consultation from being saved:</h2>
+      <ul>
+        <% consultation.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="w-25">
+    <%= f.label :schedule_time, label: 'Date de la consultation' %> <br/>
+    <%= render partial: 'layouts/datetimepicker', locals: {name: 'consultation[schedule_time]', value: @consultation.schedule_time} %>
+  </div>
+  <div style="width: 15rem;">
+    <%= f.input :patient_id, collection: @therapist.patients %>
+  </div>
+  <%= f.button :submit, value: 'Valider' %>
+<% end %>

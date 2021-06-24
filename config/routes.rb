@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+
   devise_for :therapists
   resources :therapists, only: %i[index]
   resources :statuses, only: %i[create]
-  resources :sessions
+  resources :consultations
 
   resources :patients, only: [] do
     collection do

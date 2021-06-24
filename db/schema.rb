@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_17_133624) do
+ActiveRecord::Schema.define(version: 2021_06_24_171235) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "consultations", force: :cascade do |t|
+    t.datetime "schedule_time"
+    t.bigint "therapist_id", null: false
+    t.bigint "patient_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["patient_id"], name: "index_consultations_on_patient_id"
+    t.index ["therapist_id"], name: "index_consultations_on_therapist_id"
+  end
 
   create_table "entries", force: :cascade do |t|
     t.string "location"
@@ -45,16 +55,6 @@ ActiveRecord::Schema.define(version: 2021_06_17_133624) do
     t.index ["uid", "provider"], name: "index_patients_on_uid_and_provider", unique: true
   end
 
-  create_table "sessions", force: :cascade do |t|
-    t.datetime "schedule_time"
-    t.bigint "therapist_id", null: false
-    t.bigint "patient_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["patient_id"], name: "index_sessions_on_patient_id"
-    t.index ["therapist_id"], name: "index_sessions_on_therapist_id"
-  end
-
   create_table "statuses", force: :cascade do |t|
     t.string "title"
     t.bigint "patient_id", null: false
@@ -79,9 +79,9 @@ ActiveRecord::Schema.define(version: 2021_06_17_133624) do
     t.index ["reset_password_token"], name: "index_therapists_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "consultations", "patients"
+  add_foreign_key "consultations", "therapists"
   add_foreign_key "entries", "patients"
   add_foreign_key "patients", "therapists"
-  add_foreign_key "sessions", "patients"
-  add_foreign_key "sessions", "therapists"
   add_foreign_key "statuses", "patients"
 end

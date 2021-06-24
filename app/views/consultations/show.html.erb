@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date de la consultation:</strong>
+  <%= @consultation.schedule_time.strftime("%Y/%m/%d %T") %>
+</p>
+
+<p>
+  <strong>Patient:</strong>
+  <%= @consultation.patient %>
+</p>
+
+<%= link_to 'Modifier', edit_consultation_path(@consultation) %> |
+<%= link_to 'Retour', consultations_path %>

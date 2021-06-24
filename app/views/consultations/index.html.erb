@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Scéances</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Date de la consultation</th>
+      <th>Patient</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @consultations.each do |consultation| %>
+      <tr>
+        <td><%= consultation.schedule_time&.strftime("%Y/%m/%d %T") %></td>
+        <td><%= consultation.patient %></td>
+        <td><%= link_to 'Voir', consultation  %></td>
+        <td><%= link_to 'Modifier', edit_consultation_path(consultation) %></td>
+        <td><%= link_to 'Supprimer', consultation, method: :delete, data: { confirm: "Êtes-vous sûr ? " } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Ajouter une nouvelle séance', new_consultation_path %>

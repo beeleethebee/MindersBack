@@ -5,5 +5,5 @@ class Therapist < ApplicationRecord
          :recoverable, :rememberable
 
   has_many :patients, dependent: :nullify
-  has_many :sessions, dependent: :destroy
+  has_many :consultations, dependent: :destroy
 end

@@ -7,7 +7,7 @@ class Patient < ActiveRecord::Base
   include DeviseTokenAuth::Concerns::User
 
   has_many :entries, dependent: :destroy
-  has_many :sessions, dependent: :destroy
+  has_many :consultations, dependent: :destroy
   belongs_to :therapist, optional: true
   has_many :statuses
 
