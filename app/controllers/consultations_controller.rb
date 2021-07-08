@@ -51,6 +51,6 @@ class ConsultationsController < TherapistsApplicationController
   end
 
   def consultation_params
-    params.require(:consultation).permit(:schedule_time, :patient_id)
+    params.require(:consultation).permit(:schedule_time, :patient_id, :note)
   end
 end

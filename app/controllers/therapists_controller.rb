@@ -6,7 +6,9 @@ class TherapistsController < TherapistsApplicationController
   skip_before_action :set_therapist, only: [:home]
 
 
-  def home; end
+  def home
+    redirect_to therapists_path unless current_therapist&.id.nil?
+  end
 
   def index
     @patients = @therapist.patients.includes(:statuses)

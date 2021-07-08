@@ -13,6 +13,9 @@
     <%= f.label :schedule_time, label: 'Date de la consultation' %> <br/>
     <%= render partial: 'layouts/datetimepicker', locals: {name: 'consultation[schedule_time]', value: @consultation.schedule_time} %>
   </div>
+  <div>
+    <%= f.input :note %>
+  </div>
   <div style="width: 15rem;">
     <%= f.input :patient_id, collection: @therapist.patients %>
   </div>

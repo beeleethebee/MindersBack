@@ -15,5 +15,8 @@
       <p>Dernière MAJ: </p>
       <p><%= patient.statuses.last.present? ? distance_of_time_in_words(patient.statuses.last.created_at, DateTime.now) : 'N/A' %></p>
     </div>
+    <div class="align-self-end border w-100">
+      <p><%= link_to "Voir le profil", patient_path(patient) %></p>
+    </div>
   </div>
 </div>

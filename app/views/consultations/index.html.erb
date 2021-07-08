@@ -7,6 +7,7 @@
     <tr>
       <th>Date de la consultation</th>
       <th>Patient</th>
+      <th>Note</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,6 +17,7 @@
       <tr>
         <td><%= consultation.schedule_time&.strftime("%Y/%m/%d %T") %></td>
         <td><%= consultation.patient %></td>
+        <td><%= consultation.note&.truncate(15) %></td>
         <td><%= link_to 'Voir', consultation  %></td>
         <td><%= link_to 'Modifier', edit_consultation_path(consultation) %></td>
         <td><%= link_to 'Supprimer', consultation, method: :delete, data: { confirm: "Êtes-vous sûr ? " } %></td>

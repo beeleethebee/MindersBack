@@ -1,0 +1,30 @@
+<h1><%= @patient %></h1>
+
+
+<% if @consultations.empty? %>
+  <h3>Vous n'avez pas encores de consultation pour ce patient</h3>
+<% else %>
+  <table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+      <th scope="col">Jour</th>
+      <th scope="col">Heure</th>
+      <th scope="col">Nb Entrées</th>
+      <th scope="col" class="w-25">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @consultations.each_with_index do |consultation, index| %>
+      <tr>
+        <td><%= consultation.schedule_time.strftime("%A %d %B") %></td>
+        <td><%= consultation.schedule_time.strftime("%Hh%M") %></td>
+        <td><%= @grouped_entries[consultation.id].size %></td>
+        <td class="d-flex" style="justify-content: space-evenly">
+          <%= link_to "Voir les entrées", "#" %>
+          <%= link_to "Voir la scéance", consultation_path(consultation) %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>

@@ -7,11 +7,12 @@ Rails.application.routes.draw do
   resources :statuses, only: %i[create]
   resources :consultations
 
-  resources :patients, only: [] do
+  resources :patients, only: %i[show] do
     collection do
       get :create_fake
     end
   end
+
   root 'therapists#home'
 
   namespace :api, defaults: { format: 'json' } do
