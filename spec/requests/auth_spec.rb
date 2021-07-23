@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
+require 'shared/patient'
 
 RSpec.describe 'AuthSystem', type: :request do # rubocop:todo Metrics/BlockLength
   include Rails.application.routes.url_helpers
@@ -57,15 +58,13 @@ RSpec.describe 'AuthSystem', type: :request do # rubocop:todo Metrics/BlockLengt
   end
 
   describe 'DELETE /api/auth/sign_out' do
-    let!(:patient) { create(:patient) }
+    include_context 'Basic Patient and headers'
 
     it 'can sign out' do
-      post api_patient_session_path, params: { email: patient.email, password: 'password' }
-      headers = response.headers.extract!('uid', 'access-token', 'client')
-      delete destroy_api_patient_session_path, headers: headers
+      delete destroy_api_patient_session_path, headers: @headers
       expect(response).to have_http_status(:ok)
 
-      get api_auth_validate_token_path, headers: headers
+      get api_auth_validate_token_path, headers: @headers
       expect(response).to have_http_status(:unauthorized)
     end
   end

@@ -10,6 +10,7 @@ class Patient < ActiveRecord::Base
   has_many :consultations, dependent: :destroy
   belongs_to :therapist, optional: true
   has_many :statuses
+  has_many :categories, dependent: :destroy
 
   validates_presence_of :last_name, :first_name
 

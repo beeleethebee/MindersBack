@@ -50,6 +50,7 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+  gem 'simplecov'
 end
 
 gem 'devise'
@@ -64,5 +65,4 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 end
 gem 'chartkick'
 gem 'groupdate'
-
 gem 'simple_form'

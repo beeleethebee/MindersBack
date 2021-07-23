@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_24_171235) do
+ActiveRecord::Schema.define(version: 2021_07_23_114923) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.bigint "patient_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["patient_id"], name: "index_categories_on_patient_id"
+  end
 
   create_table "consultations", force: :cascade do |t|
     t.datetime "schedule_time"
@@ -21,6 +29,7 @@ ActiveRecord::Schema.define(version: 2021_06_24_171235) do
     t.bigint "patient_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "note"
     t.index ["patient_id"], name: "index_consultations_on_patient_id"
     t.index ["therapist_id"], name: "index_consultations_on_therapist_id"
   end
@@ -33,6 +42,15 @@ ActiveRecord::Schema.define(version: 2021_06_24_171235) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["patient_id"], name: "index_entries_on_patient_id"
+  end
+
+  create_table "entry_categories", force: :cascade do |t|
+    t.bigint "entry_id", null: false
+    t.bigint "category_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_entry_categories_on_category_id"
+    t.index ["entry_id"], name: "index_entry_categories_on_entry_id"
   end
 
   create_table "patients", force: :cascade do |t|
@@ -79,9 +97,12 @@ ActiveRecord::Schema.define(version: 2021_06_24_171235) do
     t.index ["reset_password_token"], name: "index_therapists_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "categories", "patients"
   add_foreign_key "consultations", "patients"
   add_foreign_key "consultations", "therapists"
   add_foreign_key "entries", "patients"
+  add_foreign_key "entry_categories", "categories"
+  add_foreign_key "entry_categories", "entries"
   add_foreign_key "patients", "therapists"
   add_foreign_key "statuses", "patients"
 end

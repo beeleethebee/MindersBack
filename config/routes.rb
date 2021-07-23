@@ -22,5 +22,6 @@ Rails.application.routes.draw do
       # passwords: 'study_quizz/passwords'
     }
     resources :entries
+    resources :categories, only: %i[index create destroy]
   end
 end

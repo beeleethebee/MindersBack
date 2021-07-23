@@ -18,8 +18,10 @@ module Api
     # POST /api/entries
     def create
       @entry = Entry.new(entry_params)
+      @categories = Category.where(id: params[:category_ids])
       @entry.patient = @patient
       if @entry.save
+        @entry.categories << @categories
         render 'api/entries/show', status: :created, entry: @entry
       else
         render json: { errors: @entry.errors }, status: :unprocessable_entity
@@ -30,11 +32,10 @@ module Api
     def update
       return render json: '', status: :unauthorized unless @entry.patient == @patient
 
-      if @entry.update(entry_params)
-        render 'api/entries/show', status: :ok, entry: @entry
-      else
-        render json: @entry.errors, status: :unprocessable_entity
-      end
+      @entry.update(entry_params)
+      @categories = Category.where(id: params[:category_ids])
+      @entry.categories = @categories
+      render 'api/entries/show', status: :ok, entry: @entry
     end
 
     # DELETE /api/entries/1
