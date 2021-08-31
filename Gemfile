@@ -66,3 +66,6 @@ end
 gem 'chartkick'
 gem 'groupdate'
 gem 'simple_form'
+gem 'kaminari'
+gem "rqrcode", "~> 2.0"
+

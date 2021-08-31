@@ -1,0 +1,9 @@
+<h4><%= @therapist.first_name %> <%= @therapist.last_name %></h4>
+<h5><%= @therapist.address %></h5>
+
+<h5>Faites scanner ce QR code à vos patients pour vous affilier :</h5>
+<%= @svg_qr.html_safe %>
+<br/>
+<%= link_to 'Me deconnecter', destroy_therapist_session_path, method: :delete, data: { confirm: 'Êtes-vous sûr ?'}  %>
+<br/>
+<%= link_to 'Supprimer mon compte', delete_therapists_path, method: :delete, data: { confirm: 'Êtes-vous sûr ?'}  %>

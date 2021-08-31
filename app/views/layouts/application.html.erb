@@ -20,11 +20,12 @@
       <%  else  %>
         <%= link_to 'Tableau de bord', root_path %>
         <%=  link_to 'Mes séances', consultations_path %>
-        <%=  link_to 'Mon compte', therapists_path  %>
-        <%=  link_to 'Deconnexion', destroy_therapist_session_path, method: :delete  %>
+        <%=  link_to 'Mon compte', profile_therapists_path  %>
       <%  end %>
     </div>
   </header>
+  <div class="p-5">
     <%= yield %>
+  </div>
   </body>
 </html>

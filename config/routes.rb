@@ -3,11 +3,19 @@
 Rails.application.routes.draw do
 
   devise_for :therapists
-  resources :therapists, only: %i[index]
+  resources :therapists, only: %i[index] do
+    collection do
+      get :profile
+      delete :delete
+    end
+  end
   resources :statuses, only: %i[create]
   resources :consultations
 
   resources :patients, only: %i[show] do
+    member do
+      delete :remove
+    end
     collection do
       get :create_fake
     end
@@ -22,6 +30,11 @@ Rails.application.routes.draw do
       # passwords: 'study_quizz/passwords'
     }
     resources :entries
+    resources :therapists, only: %i[show] do
+      member do
+        get :add
+      end
+    end
     resources :categories, only: %i[index create destroy]
   end
 end

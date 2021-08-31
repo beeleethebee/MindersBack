@@ -14,4 +14,13 @@ class TherapistsController < TherapistsApplicationController
     @patients = @therapist.patients.includes(:statuses)
   end
 
+  def profile
+    @qr_code = RQRCode::QRCode.new(@therapist.id.to_s)
+    @svg_qr = @qr_code.as_svg
+  end
+
+  def delete
+    @therapist.destroy
+    redirect_to root_path
+  end
 end

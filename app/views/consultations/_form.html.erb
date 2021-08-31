@@ -17,7 +17,7 @@
     <%= f.input :note %>
   </div>
   <div style="width: 15rem;">
-    <%= f.input :patient_id, collection: @therapist.patients %>
+    <%= f.input :patient_id, collection: @therapist.patients, selected: params[:consultation_patient_id] %>
   </div>
   <%= f.button :submit, value: 'Valider' %>
 <% end %>

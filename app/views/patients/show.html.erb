@@ -1,9 +1,20 @@
 <h1><%= @patient %></h1>
-
+<%= link_to "Retour", root_path %>
+<%= link_to "Retirer", remove_patient_path(@patient), method: :delete%>
+<%= link_to "Créer une scéance", new_consultation_path({consultation_patient_id: @patient.id})%>
+<div class="p-3">
+  <h3>Informations générales</h3>
+  <div class="p-2">
+    <p>Ajouté il y a <%= distance_of_time_in_words(@patient.created_at, DateTime.now) %></p>
+    <p><%= @patient.consultations.size %> consultation<%= 's' if @patient.consultations.any? %></p>
+    <p><%= @patient.entries.size %> entrée<%= 's' if @patient.entries.any? %></p>
+  </div>
+</div>
 
 <% if @consultations.empty? %>
-  <h3>Vous n'avez pas encores de consultation pour ce patient</h3>
+  <h3 class="p-3">Vous n'avez pas encores de consultation pour ce patient</h3>
 <% else %>
+  <h3 class="p-3">Mes consultations</h3>
   <table class="table table-bordered table-striped">
     <thead>
     <tr>
@@ -27,4 +38,29 @@
     <% end %>
     </tbody>
   </table>
+<% end %>
+
+<% if @entries.any? %>
+  <div class="w-100">
+    <h3 class="p-3">Entrées du patient:</h3>
+    <div class="d-flex flex-wrap">
+      <% @entries.each do |entry| %>
+        <div class="border m-3 p-3 entry">
+          <p>Location: <%= entry.location %></p>
+          <p><%= entry.time.strftime("%Hh%M, %d/%m/%Y") %></p>
+          <p class="m-0">
+            Context:
+            <p class="entry--content">
+              <%=  entry.context %>
+            </p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="w-100 d-flex justify-content-center">
+    <%= paginate @entries %>
+  </div>
+<% else %>
+  <h3 class="p-3">Ce patient n'as pas encore fait d'entrées </h3>
 <% end %>

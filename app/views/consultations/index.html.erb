@@ -15,8 +15,8 @@
   <tbody>
     <% @consultations.each do |consultation| %>
       <tr>
-        <td><%= consultation.schedule_time&.strftime("%Y/%m/%d %T") %></td>
-        <td><%= consultation.patient %></td>
+        <td><%= consultation.schedule_time&.strftime("%Y/%m/%d %Hh%M") %></td>
+        <td><%= link_to consultation.patient, patient_path(consultation.patient) %></td>
         <td><%= consultation.note&.truncate(15) %></td>
         <td><%= link_to 'Voir', consultation  %></td>
         <td><%= link_to 'Modifier', edit_consultation_path(consultation) %></td>

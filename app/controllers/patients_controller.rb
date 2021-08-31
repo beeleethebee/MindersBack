@@ -1,9 +1,9 @@
 class PatientsController < TherapistsApplicationController
-  before_action :set_patient, only: %i[show]
+  before_action :set_patient, only: %i[show remove]
 
   def show
     @consultations = @patient.consultations.order(:schedule_time)
-    @entries = @patient.entries
+    @entries = @patient.entries.order(time: :desc).page(params[:page] || 0).per(10)
     set_grouped_entries
   end
 
@@ -18,6 +18,11 @@ class PatientsController < TherapistsApplicationController
   def create_fake
     FactoryBot.create(:patient, therapist: @therapist)
     redirect_to root_path, notice: 'Patient créé'
+  end
+
+  def remove
+    @patient.update(therapist: nil)
+    redirect_to root_path, notice: "#{@patient.first_name} #{@patient.last_name} n'est plus à votre charge"
   end
 
   private

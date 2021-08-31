@@ -100,6 +100,7 @@ RSpec.describe 'Api::EntriesController', type: :request do # rubocop:todo Metric
 
   describe 'PATCH /api/entries/:id' do # rubocop:todo Metrics/BlockLength
     include_context 'Basic Patient and headers'
+    let!(:more_categories) { create_list(:category, 5, patient: patient)}
     let!(:entry) { create(:entry, patient: patient, with_categories: true) }
 
     it 'can update an existing entry' do

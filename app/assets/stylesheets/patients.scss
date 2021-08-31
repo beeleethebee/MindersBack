@@ -1,0 +1,12 @@
+.entry {
+  width: 200px;
+  padding-bottom: 0px !important;
+  min-height: 100px;
+}
+
+.entry--content {
+  padding: 0 !important;
+  margin: 0 !important;;
+  max-height: 140px;
+  overflow: auto;
+}
