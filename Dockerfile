@@ -2,7 +2,7 @@ FROM ruby:2.7.1
 
 WORKDIR /app
 
-RUN apt-get update && apt-get install -y \
+RUN apt-get update --allow-releaseinfo-change && apt-get install -y \
   curl \
   cron \
   build-essential \
@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y \
 COPY Gemfile /app/Gemfile
 COPY Gemfile.lock /app/Gemfile.lock
 RUN bundle install
-RUN curl -sL https://deb.nodesource.com/setup_11.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
 RUN apt-get install -y nodejs
 RUN npm install -g yarn
 ADD docker-entrypoint.sh /docker-entrypoint.sh
