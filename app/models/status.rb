@@ -14,6 +14,7 @@ class Status < ApplicationRecord
 
     errors.add(:title, "Doit avoir une valeur existante (#{Global::Status.join(', ')})")
   end
+
   def validate_positivity
     return unless positivity.negative? || positivity > 10
 

@@ -13,6 +13,8 @@ module MindersBack
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
 
+    config.hosts << "studygrock.ngrok.io"
+    config.hosts <<  "www.example.com"
     config.middleware.use Rack::Cors do
       allow do
         origins '*'

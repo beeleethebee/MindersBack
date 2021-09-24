@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2021-08-31T11:53:07+02:00">2021-08-31T11:53:07+02:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2021-09-24T16:18:38+02:00">2021-09-24T16:18:38+02:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -30,7 +30,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         4.19
+         3.95
        </span>
     </span> hits/line
     )
@@ -43,8 +43,8 @@
   </div>
 
   <div class="t-line-summary">
-    <b>791</b> relevant lines,
-    <span class="green"><b>791</b> lines covered</span> and
+    <b>793</b> relevant lines,
+    <span class="green"><b>793</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed. </span>
     (<span class="green">
   100.0%
@@ -282,9 +282,9 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#fbf83c1e2e3edd408a45d206c17d5e27c1e111d1" class="src_link" title="config/application.rb">config/application.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">26</td>
-            <td class="cell--number">10</td>
-            <td class="cell--number">10</td>
+            <td class="cell--number">28</td>
+            <td class="cell--number">12</td>
+            <td class="cell--number">12</td>
             <td class="cell--number">0</td>
             <td class="cell--number">1.00</td>
             
@@ -506,7 +506,7 @@
             <td class="cell--number">4</td>
             <td class="cell--number">4</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">116.75</td>
+            <td class="cell--number">87.25</td>
             
           </tr>
         
@@ -605,7 +605,7 @@
             <td class="cell--number">74</td>
             <td class="cell--number">74</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">3.89</td>
+            <td class="cell--number">3.03</td>
             
           </tr>
         
@@ -616,7 +616,7 @@
             <td class="cell--number">111</td>
             <td class="cell--number">111</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">1.50</td>
+            <td class="cell--number">1.52</td>
             
           </tr>
         
@@ -3946,8 +3946,8 @@
     
 
     <div class="t-line-summary">
-      <b>10</b> relevant lines.
-      <span class="green"><b>10</b> lines covered</span> and
+      <b>12</b> relevant lines.
+      <span class="green"><b>12</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -4130,7 +4130,7 @@
 
             
 
-            <code class="ruby">    config.middleware.use Rack::Cors do</code>
+            <code class="ruby">    config.hosts &lt;&lt; &quot;studygrock.ngrok.io&quot;</code>
           </li>
         </div>
       
@@ -4141,7 +4141,7 @@
 
             
 
-            <code class="ruby">      allow do</code>
+            <code class="ruby">    config.hosts &lt;&lt;  &quot;www.example.com&quot;</code>
           </li>
         </div>
       
@@ -4152,7 +4152,7 @@
 
             
 
-            <code class="ruby">        origins &#39;*&#39;</code>
+            <code class="ruby">    config.middleware.use Rack::Cors do</code>
           </li>
         </div>
       
@@ -4163,29 +4163,29 @@
 
             
 
+            <code class="ruby">      allow do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="20">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        origins &#39;*&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="21">
+            <span class="hits">1</span>
+            
+
+            
+
             <code class="ruby">        resource &#39;*&#39;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="20">
-            
-            
-
-            
-
-            <code class="ruby">                 headers: :any,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="21">
-            
-            
-
-            
-
-            <code class="ruby">                 expose: %w[access-token expiry token-type uid client],</code>
           </li>
         </div>
       
@@ -4196,7 +4196,7 @@
 
             
 
-            <code class="ruby">                 methods: %i[get post options delete put]</code>
+            <code class="ruby">                 headers: :any,</code>
           </li>
         </div>
       
@@ -4207,7 +4207,7 @@
 
             
 
-            <code class="ruby">      end</code>
+            <code class="ruby">                 expose: %w[access-token expiry token-type uid client],</code>
           </li>
         </div>
       
@@ -4218,7 +4218,7 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">                 methods: %i[get post options delete put]</code>
           </li>
         </div>
       
@@ -4229,12 +4229,34 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">      end</code>
           </li>
         </div>
       
         <div>
           <li class="never" data-hits="" data-linenumber="26">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="27">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="28">
             
             
 
@@ -18406,8 +18428,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="464" data-linenumber="3">
-            <span class="hits">464</span>
+          <li class="covered" data-hits="346" data-linenumber="3">
+            <span class="hits">346</span>
             
 
             
@@ -21413,8 +21435,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="99" data-linenumber="47">
-            <span class="hits">99</span>
+          <li class="covered" data-hits="67" data-linenumber="47">
+            <span class="hits">67</span>
             
 
             
@@ -21424,8 +21446,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="99" data-linenumber="48">
-            <span class="hits">99</span>
+          <li class="covered" data-hits="67" data-linenumber="48">
+            <span class="hits">67</span>
             
 
             
@@ -22698,8 +22720,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="45">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="4" data-linenumber="45">
+            <span class="hits">4</span>
             
 
             
