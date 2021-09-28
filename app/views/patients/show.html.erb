@@ -1,7 +1,7 @@
 <h1><%= @patient %></h1>
-<%= link_to "Retour", root_path %>
-<%= link_to "Retirer", remove_patient_path(@patient), method: :delete%>
-<%= link_to "Créer une scéance", new_consultation_path({consultation_patient_id: @patient.id})%>
+<%= link_to "Retour", root_path, class: "btn btn-outline-secondary mx-1" %>
+<%= link_to "Retirer", remove_patient_path(@patient), method: :delete, class: "btn btn-outline-danger mx-1"%>
+<%= link_to "Créer une scéance", new_consultation_path({consultation_patient_id: @patient.id}), class: "btn btn-outline-primary mx-1"%>
 <div class="p-3">
   <h3>Informations générales</h3>
   <div class="p-2">

@@ -4,6 +4,6 @@
 <h5>Faites scanner ce QR code à vos patients pour vous affilier :</h5>
 <%= @svg_qr.html_safe %>
 <br/>
-<%= link_to 'Me deconnecter', destroy_therapist_session_path, method: :delete, data: { confirm: 'Êtes-vous sûr ?'}  %>
-<br/>
-<%= link_to 'Supprimer mon compte', delete_therapists_path, method: :delete, data: { confirm: 'Êtes-vous sûr ?'}  %>
+<%= link_to 'Me deconnecter', destroy_therapist_session_path, method: :delete, data: { confirm: 'Êtes-vous sûr ?'}, class: "btn btn-outline-danger my-5 mx-2" %>
+
+<%= link_to 'Supprimer mon compte', delete_therapists_path, method: :delete, data: { confirm: 'Êtes-vous sûr ?'}, class: "btn btn-outline-danger" %>

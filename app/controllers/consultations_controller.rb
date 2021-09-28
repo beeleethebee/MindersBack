@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ConsultationsController < TherapistsApplicationController
   before_action :set_consultation, only: %i[show edit update destroy]
 

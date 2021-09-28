@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Global
-  Status = ['Favorable', 'À surveiller', 'En attente'].freeze
+  STATUS = ['Favorable', 'À surveiller', 'En attente'].freeze
 end

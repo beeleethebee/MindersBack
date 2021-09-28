@@ -8,7 +8,6 @@ RSpec.describe 'Api::TherapistsController', type: :request do # rubocop:todo Met
   let!(:therapist) { create(:therapist) }
 
   describe 'GET /api/therapists/:id' do
-
     it '200 if success' do
       get api_therapist_path(therapist.id), headers: @headers
       expect(response).to have_http_status(:ok)
@@ -32,7 +31,6 @@ RSpec.describe 'Api::TherapistsController', type: :request do # rubocop:todo Met
   end
 
   describe 'GET /api/therapists/:id/add' do
-
     it '201 if success' do
       get add_api_therapist_path(therapist.id), headers: @headers
       expect(response).to have_http_status(:created)

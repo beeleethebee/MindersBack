@@ -7,7 +7,7 @@
     <div class="d-flex justify-content-between border w-100">
       <p>Status: </p>
       <%= form_with url: statuses_url, method: :post, local: true, id: 'status_form' do |form| %>
-        <%= form.select(:status, options_for_select(['', *Global::Status], patient.statuses.last&.title), {}, { onchange: "submitForm(this)"} ) %>
+        <%= form.select(:status, options_for_select(['', *Global::STATUS], patient.statuses.last&.title), {}, { onchange: "submitForm(this)"} ) %>
         <%= form.hidden_field(:patient, value: patient.id) %>
       <% end %>
     </div>
@@ -16,7 +16,7 @@
       <p><%= patient.statuses.last.present? ? distance_of_time_in_words(patient.statuses.last.created_at, DateTime.now) : 'N/A' %></p>
     </div>
     <div class="align-self-end border w-100">
-      <p><%= link_to "Voir le profil", patient_path(patient) %></p>
+      <%= link_to "Voir le profil", patient_path(patient), class: "btn btn-outline-secondary w-100" %>
     </div>
   </div>
 </div>

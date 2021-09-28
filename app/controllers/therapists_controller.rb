@@ -5,7 +5,6 @@ class TherapistsController < TherapistsApplicationController
   skip_before_action :authenticate_therapist!, only: [:home]
   skip_before_action :set_therapist, only: [:home]
 
-
   def home
     redirect_to therapists_path unless current_therapist&.id.nil?
   end

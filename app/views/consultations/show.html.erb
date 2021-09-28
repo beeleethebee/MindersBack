@@ -15,5 +15,5 @@
   <%= @consultation.patient %>
 </p>
 
-<%= link_to 'Modifier', edit_consultation_path(@consultation) %> |
-<%= link_to 'Retour', consultations_path %>
+<%= link_to 'Modifier', edit_consultation_path(@consultation), class: "btn btn-outline-primary mx-1" %>
+<%= link_to 'Retour', consultations_path, class: "btn btn-outline-secondary mx-1" %>

@@ -11,10 +11,8 @@ FactoryBot.define do
     time { Faker::Date.between(from: 2.days.ago, to: Date.today) }
     patient { create(:patient) }
 
-
     after(:create) do |entry, evaluator|
       entry.categories << [create_list(:category, rand(1...5), patient: entry.patient)] if evaluator.with_categories
     end
-
   end
 end

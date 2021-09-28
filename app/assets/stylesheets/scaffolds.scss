@@ -14,15 +14,18 @@ pre {
   font-size: 11px; }
 
 a {
-  color: #000; }
+  color: #342828 !important;
+  //text-decoration: $link-decoration;
+  background-color: transparent; // Remove the gray background on active links in IE 10.
+
+}
 
 a:visited {
-  color: #666; }
+  color: #342828; }
 
 a:hover {
   color: #fff;
-  background-color: #000; }
-
+}
 th {
   padding-bottom: 5px; }
 

@@ -15,5 +15,4 @@ class ApiController < ActionController::API
   def render_bad_request(full_messages)
     render json: { errors: full_messages }, status: :bad_request
   end
-
 end

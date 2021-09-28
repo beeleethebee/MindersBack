@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Category < ApplicationRecord
   belongs_to :patient, optional: true
   has_many :entry_categories, dependent: :destroy

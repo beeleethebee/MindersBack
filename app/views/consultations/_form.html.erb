@@ -19,5 +19,5 @@
   <div style="width: 15rem;">
     <%= f.input :patient_id, collection: @therapist.patients, selected: params[:consultation_patient_id] %>
   </div>
-  <%= f.button :submit, value: 'Valider' %>
+  <%= f.button :submit, value: 'Valider', class: "btn btn-outline-success m-1" %>
 <% end %>

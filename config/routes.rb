@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-
   devise_for :therapists
   resources :therapists, only: %i[index] do
     collection do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class StatusesController < TherapistsApplicationController
   def create
     patient = Patient.find(params[:patient])

@@ -14,7 +14,6 @@ module Api
 
     private
 
-
     def set_therapist
       @therapist = Therapist.find(params[:id])
     end

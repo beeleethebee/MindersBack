@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 require 'shared/patient'
 RSpec.describe 'Api::Categories', type: :request do
@@ -16,7 +18,7 @@ RSpec.describe 'Api::Categories', type: :request do
     end
 
     describe 'it return categories' do
-      let!(:category_count) { rand(10...100)}
+      let!(:category_count) { rand(10...100) }
       let!(:categories) { create_list(:category, category_count, patient: nil) }
 
       it 'returns all generics categories' do
@@ -44,8 +46,8 @@ RSpec.describe 'Api::Categories', type: :request do
         category_names = categories.map(&:name)
         category_ids = categories.map(&:id)
         categories_json = JSON.parse response.body
-        expect(categories_json.map{|el| el['name']}).to match_array(category_names)
-        expect(categories_json.map{|el| el['id']}).to match_array(category_ids)
+        expect(categories_json.map { |el| el['name'] }).to match_array(category_names)
+        expect(categories_json.map { |el| el['id'] }).to match_array(category_ids)
       end
     end
   end
@@ -79,7 +81,6 @@ RSpec.describe 'Api::Categories', type: :request do
       post api_categories_path, params: { name: name }, headers: @headers
       expect(response).to have_http_status(:bad_request)
     end
-
   end
 
   describe 'GET /destroy/:id' do
@@ -112,5 +113,4 @@ RSpec.describe 'Api::Categories', type: :request do
       expect(response).to have_http_status(:unauthorized)
     end
   end
-
 end

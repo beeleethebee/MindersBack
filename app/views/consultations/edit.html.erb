@@ -2,5 +2,8 @@
 
 <%= render 'form', consultation: @consultation %>
 
-<%= link_to 'Voir', @consultation %> |
-<%= link_to 'Retour', consultations_path %>
+<div class="my-5">
+  <%= link_to 'Voir', @consultation, class: "btn btn-outline-primary mx-1" %>
+  <%= link_to 'Retour', consultations_path, class: "btn btn-outline-secondary mx-1" %>
+</div>
+
