@@ -9,7 +9,7 @@ class Patient < ActiveRecord::Base
   has_many :entries, dependent: :destroy
   has_many :consultations, dependent: :destroy
   belongs_to :therapist, optional: true
-  has_many :statuses
+  has_many :statuses, dependent: :destroy
   has_many :categories, dependent: :destroy
 
   validates_presence_of :last_name, :first_name
@@ -17,4 +17,5 @@ class Patient < ActiveRecord::Base
   def to_s
     "#{first_name} #{last_name}"
   end
+
 end

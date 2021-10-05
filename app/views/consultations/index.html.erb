@@ -1,10 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Scéances à venir</h1>
-<%= render partial: 'table', locals: { consultations: @consultations.where('schedule_time > ?', DateTime.now)} %>
+<%= render partial: 'table', locals: { consultations: @consultations.where('schedule_time > ?', DateTime.now).order(:schedule_time)} %>
 
 <h1>Scéances passées</h1>
-<%= render partial: 'table', locals: { consultations: @consultations.where('schedule_time < ?', DateTime.now)} %>
+<%= render partial: 'table', locals: { consultations: @consultations.where('schedule_time < ?', DateTime.now).order(schedule_time: :desc)} %>
 
 <br>
 

@@ -9,7 +9,13 @@ class ConsultationsController < TherapistsApplicationController
   end
 
   # GET /sessions/1
-  def show; end
+  def show
+    last_consultation = @consultation.patient.consultations
+                                     .where('schedule_time < ?', @consultation.schedule_time)
+                                     .order(schedule_time: :desc).first
+    @entries = @consultation.patient.entries.where('entries.time < ?', @consultation.schedule_time)
+    @entries = @entries.where('entries.time > ?', last_consultation.schedule_time) unless last_consultation.nil?
+  end
 
   # GET /sessions/new
   def new

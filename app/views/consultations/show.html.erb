@@ -1,3 +1,5 @@
+<%= link_to 'Retour', consultations_path, class: "btn btn-outline-secondary mx-1" %>
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -16,4 +18,25 @@
 </p>
 
 <%= link_to 'Modifier', edit_consultation_path(@consultation), class: "btn btn-outline-primary mx-1" %>
-<%= link_to 'Retour', consultations_path, class: "btn btn-outline-secondary mx-1" %>
+
+
+<% if @entries&.any? %>
+  <div class="w-100 py-5">
+    <h3>Entrées du patient relatives à la scéance:</h3>
+    <div class="d-flex flex-wrap">
+      <% @entries.each do |entry| %>
+        <div class="border m-3 p-3 entry">
+          <p>Location: <%= entry.location %></p>
+          <p><%= entry.time.strftime("%Hh%M, %d/%m/%Y") %></p>
+          <p class="m-0">
+            Context:
+          <p class="entry--content">
+            <%=  entry.context %>
+          </p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% else %>
+  <h3>Aucune entrée à afficher pour cette consultation</h3>
+<% end %>

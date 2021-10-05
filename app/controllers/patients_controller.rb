@@ -31,9 +31,9 @@ class PatientsController < TherapistsApplicationController
   def set_grouped_entries
     @grouped_entries = {}
     @consultations.each_with_index do |consultation, index|
-      grouped_entries = @patient.entries.where('entries.created_at < ?', consultation.schedule_time)
+      grouped_entries = @patient.entries.where('entries.time < ?', consultation.schedule_time)
       if index.positive?
-        grouped_entries = grouped_entries.where('entries.created_at > ? ', @consultations[index - 1].schedule_time)
+        grouped_entries = grouped_entries.where('entries.time > ? ', @consultations[index - 1].schedule_time)
       end
       @grouped_entries[consultation.id] = grouped_entries
     end
