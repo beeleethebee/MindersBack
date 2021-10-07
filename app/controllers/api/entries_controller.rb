@@ -7,7 +7,7 @@ module Api
 
     # GET /api/entries
     def index
-      @entries = Entry.all
+      @entries = @patient.entries
     end
 
     # GET /api/entries/1
